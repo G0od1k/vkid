@@ -6,8 +6,10 @@ const { Server } = require("socket.io")
 const io = new Server(server)
 
 app.get("/", (req, res) => {
-    res.send("Hi!")
+    res.sendFile(__dirname + "/client/index.html")
 })
+
+app.use(express.static("client"))
 
 io.on("connection", (socket) => {
     console.log("a user connected")
