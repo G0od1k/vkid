@@ -1,0 +1,15 @@
+{
+    "name": "vkid",
+    "version": "0.1.0",
+    "description": "Small tool for watching video together",
+    "main": "index.js",
+    "scripts": {
+        "start": "node ."
+    },
+    "author": "G0od1k <g0cd1k@gmail.com> (https://github.com/G0od1k)",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.18.2",
+        "socket.io": "^4.6.1"
+    }
+}
