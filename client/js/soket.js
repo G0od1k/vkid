@@ -23,6 +23,7 @@ socket.on("data", (data) => {
     })
 
     if (data.playlist[data.pos]) {
+        title.innerText ||= data.playlist[data.pos].name
         video.src ||= data.playlist[data.pos].url
     }
 
