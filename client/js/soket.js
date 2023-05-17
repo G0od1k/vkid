@@ -22,5 +22,9 @@ socket.on("data", (data) => {
         playlistNode.appendChild(videoEl)
     })
 
+    if (data.playlist[data.pos]) {
+        video.src ||= data.playlist[data.pos].url
+    }
+
     room = data
 })
