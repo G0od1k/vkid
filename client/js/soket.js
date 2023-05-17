@@ -5,5 +5,22 @@ socket.on("data", (data) => {
     input.placeholder = data.code
     input.value = ""
 
+    const playlistNode = document.querySelector("#playlist")
+
+    Object.values(playlistNode.children).forEach((e) => {
+        playlistNode.removeChild(e)
+    })
+
+    data.playlist.forEach((x, i) => {
+        let videoEl = document
+            .querySelector("#video-tem")
+            .content.cloneNode(true)
+
+        videoEl.querySelector(".name").value = x.name
+        videoEl.querySelector(".url").value = x.url
+
+        playlistNode.appendChild(videoEl)
+    })
+
     room = data
 })

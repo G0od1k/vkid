@@ -3,6 +3,8 @@ class Room {
     constructor(code, socket, rooms) {
         this.code = code
         this.users = new Set()
+        this.playlist = []
+        this.pos = 0
 
         this.#rooms = rooms
         rooms[code] = this

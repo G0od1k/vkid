@@ -48,6 +48,14 @@ io.on("connection", (socket) => {
         room.join(socket)
     })
 
+    socket.on("add", (name, url) => {
+        room.playlist.push({
+            name: name || "Name",
+            url: url || "#",
+        })
+        io.to(room.code).emit("data", room)
+    })
+
     console.log("a user connected")
     console.log(Object.keys(rooms).join(" "))
 })

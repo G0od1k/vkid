@@ -7,13 +7,30 @@
         <script src="/socket.io/socket.io.js" defer></script>
         <script src="./js/soket.js" defer></script>
         <script src="./js/room.js" defer></script>
+        <script src="./js/playlist.js" defer></script>
 
         <link rel="stylesheet" href="style.css" />
         <title>Vkid</title>
     </head>
     <body>
+        <aside>
+            <form id="addVideoForm">
+                <label>Name: <input type="text" id="addVideoName" /></label>
+                <label>Video: <input type="text" id="addVideoUrl" /></label>
+                <button type="submit"></button>
+            </form>
+            <div id="playlist"></div>
+        </aside>
+
         <form id="room">
             <input type="text" id="code" />
         </form>
+
+        <template id="video-tem">
+            <div class="video">
+                <input type="text" class="name" />
+                <input type="text" class="url" />
+            </div>
+        </template>
     </body>
 </html>
