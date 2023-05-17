@@ -33,9 +33,11 @@ socket.on("data", (data) => {
 socket.on("play", (time) => {
     video.currentTime = time
     video.play()
+    playButton.style.background = "url(./svg/pause.svg)"
 })
 
 socket.on("pause", (time) => {
     video.currentTime = time
     video.pause()
+    playButton.style.background = "url(./svg/play.svg)"
 })
