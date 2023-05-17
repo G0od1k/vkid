@@ -28,3 +28,13 @@ socket.on("data", (data) => {
 
     room = data
 })
+
+socket.on("play", (time) => {
+    video.currentTime = time
+    video.play()
+})
+
+socket.on("pause", (time) => {
+    video.currentTime = time
+    video.pause()
+})

@@ -56,6 +56,14 @@ io.on("connection", (socket) => {
         io.to(room.code).emit("data", room)
     })
 
+    socket.on("play", (time) => {
+        io.to(room.code).emit("play", time)
+    })
+
+    socket.on("pause", (time) => {
+        io.to(room.code).emit("pause", time)
+    })
+
     console.log("a user connected")
     console.log(Object.keys(rooms).join(" "))
 })
