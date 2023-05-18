@@ -51,3 +51,15 @@ socket.on("pause", (time) => {
     video.pause()
     playButton.style.background = "url(./svg/play.svg)"
 })
+
+socket.on("rewind", (time) => {
+    if (video.paused) {
+        video.currentTime = time
+    } else {
+        video.pause()
+        video.currentTime = time
+        setTimeout(() => {
+            video.play()
+        }, 1000)
+    }
+})

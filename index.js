@@ -69,6 +69,10 @@ io.on("connection", (socket) => {
         io.to(room.code).emit("pause", time)
     })
 
+    socket.on("rewind", (time) => {
+        io.to(room.code).emit("rewind", time)
+    })
+
     console.log("a user connected")
     console.log(Object.keys(rooms).join(" "))
 })
