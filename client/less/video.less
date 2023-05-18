@@ -37,9 +37,12 @@ video {
     background: #0006;
 
     display: flex;
-    gap: 0 0.75rem;
 
     transition: 0.3s;
+
+    & > :not(button) ~ :not(button) {
+        margin-left: 0.5rem;
+    }
 
     > button {
         min-width: 2rem;
