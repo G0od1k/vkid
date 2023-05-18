@@ -48,6 +48,11 @@ io.on("connection", (socket) => {
         room.join(socket)
     })
 
+    socket.on("open", (pos) => {
+        io.to(room.code).emit("open", pos)
+        room.pos = pos
+    })
+
     socket.on("add", (name, url) => {
         room.playlist.push({
             name: name || "Name",

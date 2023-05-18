@@ -12,14 +12,18 @@ socket.on("data", (data) => {
     })
 
     data.playlist.forEach((x, i) => {
-        let videoEl = document
+        let videoNode = document
             .querySelector("#video-tem")
             .content.cloneNode(true)
 
-        videoEl.querySelector(".name").value = x.name
-        videoEl.querySelector(".url").value = x.url
+        videoNode.querySelector(".name").value = x.name
+        videoNode.querySelector(".url").value = x.url
 
-        playlistNode.appendChild(videoEl)
+        videoNode.querySelector(".play").onclick = () => {
+            socket.emit("open", i)
+        }
+
+        playlistNode.appendChild(videoNode)
     })
 
     if (data.playlist[data.pos]) {
@@ -28,6 +32,12 @@ socket.on("data", (data) => {
     }
 
     room = data
+})
+
+socket.on("open", (pos) => {
+    playButton.style.background = "url(./svg/play.svg)"
+    title.innerText = room.playlist[pos].name
+    video.src = room.playlist[pos].url
 })
 
 socket.on("play", (time) => {
