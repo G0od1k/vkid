@@ -22,6 +22,10 @@ video {
     width: 100%;
     box-sizing: border-box;
     background: linear-gradient(180deg, #0008, #0000);
+
+    &:has(~ #btns:hover) {
+        opacity: 1;
+    }
 }
 
 #btns {
@@ -43,6 +47,10 @@ video {
         border: 0;
         padding: 0;
         background-color: none;
+    }
+
+    &:hover {
+        opacity: 1;
     }
 }
 
@@ -83,4 +91,19 @@ video {
 
 #rangeBuff {
     background-color: #222;
+}
+
+#fullscreen {
+    background: url(./svg/expand.svg);
+}
+
+@media all and (display-mode: fullscreen) {
+    #btns,
+    #title {
+        opacity: 0;
+    }
+
+    #fullscreen {
+        background: url(./svg/compress.svg);
+    }
 }

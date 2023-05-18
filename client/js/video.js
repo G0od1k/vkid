@@ -1,6 +1,7 @@
 const video = document.querySelector(`video`),
     playButton = document.querySelector(`#play`),
-    range = document.querySelector(`#range`)
+    range = document.querySelector(`#range`),
+    videoBox = document.querySelector(`#videoBox`)
 
 video.onplay = () => {
     socket.emit("play", video.currentTime)
@@ -12,6 +13,14 @@ video.onpause = () => {
 
 playButton.onclick = () => {
     video.paused ? video.play() : video.pause()
+}
+
+document.querySelector(`#fullscreen`).onclick = () => {
+    if (document.fullscreenElement) {
+        document.exitFullscreen()
+    } else {
+        videoBox.requestFullscreen()
+    }
 }
 
 range.onclick = (e) => {
