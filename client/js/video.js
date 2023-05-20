@@ -70,3 +70,11 @@ video.addEventListener("progress", () => {
         }
     }
 })
+
+document.querySelector("#volume").oninput = (e) => {
+    video.volume = e.target.valueAsNumber
+    e.target.setAttribute(
+        "valueAsPercentage",
+        Math.round(video.volume * 100) + "%"
+    )
+}

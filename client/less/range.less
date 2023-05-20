@@ -1,0 +1,57 @@
+input[type="range"] {
+    appearance: none;
+    width: 5rem;
+    height: 2rem;
+    margin: 0;
+    background: #0000;
+    outline: none;
+
+    position: relative;
+
+    &:hover::after {
+        transform: translateY(-0.5rem);
+        opacity: 1;
+    }
+
+    &::after {
+        content: attr(valueAsPercentage);
+        position: absolute;
+        width: 100%;
+        text-align: center;
+
+        transition: 0.3s;
+        opacity: 0;
+    }
+
+    &::-webkit-slider-runnable-track {
+        background-color: #161616;
+        height: 0.5rem;
+        border-radius: 1rem;
+    }
+
+    &::-moz-range-track {
+        background-color: #161616;
+        height: 0.5rem;
+        border-radius: 1rem;
+    }
+
+    &::-webkit-slider-thumb {
+        appearance: none;
+        width: 0.5rem;
+        height: 0.5rem;
+        background: white;
+        cursor: pointer;
+
+        border-radius: 1rem;
+    }
+
+    &::-moz-range-thumb {
+        width: 0.5rem;
+        height: 0.5rem;
+        border: 0;
+        background: white;
+        cursor: pointer;
+
+        border-radius: 1rem;
+    }
+}
