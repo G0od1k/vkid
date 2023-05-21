@@ -9,6 +9,7 @@
         <script src="./js/room.js" defer></script>
         <script src="./js/playlist.js" defer></script>
         <script src="./js/video.js" defer></script>
+        <script src="./js/import.js" defer></script>
 
         <link rel="stylesheet" href="style.css" />
         <title>Vkid</title>
@@ -60,6 +61,9 @@
                 <label>Subtitles:<input type="text" id="addVideoVtt" /></label>
                 <div>
                     <button type="submit" class="plus"></button>
+                    <label class="btn import">
+                        <input type="file" id="import" hidden/>
+                    </label>
                     <label class="btn more">
                         <input type="checkbox" id="moreAddLines" hidden />
                     </label>
