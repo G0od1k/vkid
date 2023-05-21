@@ -40,7 +40,7 @@ video {
 
     transition: 0.3s;
 
-    & > :not(button) ~ :not(button) {
+    & > :not(:is(button, label)) ~ :not(:is(button, label)) {
         margin-left: 0.5rem;
     }
 

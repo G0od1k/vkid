@@ -5,6 +5,10 @@
     transform: translateX(-50%);
 
     text-align: center;
+
+    &:has(+ #btns > #subtitlesBtn > :checked) > #subtitles {
+        display: inline;
+    }
 }
 
 #subtitles {
@@ -20,7 +24,18 @@
 
     cursor: default;
 
+    display: none;
+
     &:empty {
         display: none !important;
+    }
+}
+
+#subtitlesBtn {
+    min-width: 2rem;
+    height: 2rem;
+
+    &:has(:not(:checked)) {
+        filter: brightness(0.5);
     }
 }

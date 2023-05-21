@@ -1,0 +1,4 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 4 4">
+    <path d="M1.5 1.5a.5 .5 0 1 0 .5 .5" stroke="white" fill="none" stroke-width=".3" stroke-linecap="round" stroke-linejoin="round" transform="rotate(45 1.5 2)" id="c"/>
+    <use href="#c" transform="translate(1)" />
+</svg>
