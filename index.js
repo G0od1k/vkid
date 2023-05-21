@@ -40,7 +40,7 @@ io.on("connection", (socket) => {
     })
 
     socket.on("join", (code) => {
-        if (rooms[code] == undefined) return 0
+        if (rooms[code] == undefined || code == room.code) return 0
 
         room.leave(socket)
 
