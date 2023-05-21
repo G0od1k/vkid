@@ -17,6 +17,7 @@
         <div id="videoBox">
             <h2 id="title"></h2>
             <video></video>
+            <audio></audio>
             <div id="btns">
                 <button id="play" class="play"></button>
                 <span id="time">00:00<br />00:00</span>
@@ -40,8 +41,9 @@
 
         <aside>
             <form id="addVideoForm">
-                <label>Name: <input type="text" id="addVideoName" /></label>
-                <label>Video: <input type="text" id="addVideoUrl" /></label>
+                <label>Name:<input type="text" id="addVideoName" /></label>
+                <label>Video:<input type="text" id="addVideoUrl" /></label>
+                <label>Audio:<input type="text" id="addVideoAudio" /></label>
                 <div>
                     <button type="submit" class="plus"></button>
                     <label class="btn more">
@@ -61,7 +63,11 @@
                 <button class="play"></button>
                 <input type="text" class="name" />
                 <input type="text" class="url" />
+                <input type="text" class="audio" />
                 <div>
+                    <label class="btn more">
+                        <input type="checkbox" hidden />
+                    </label>
                     <button class="arrow-up"></button>
                     <button class="arrow-down"></button>
                     <button class="cross"></button>

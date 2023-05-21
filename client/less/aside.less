@@ -40,13 +40,17 @@
 
     > div {
         position: absolute;
-        bottom: 1rem;
+        bottom: 0;
+        right: 0;
+        padding: 0 1rem 1rem;
         height: 2rem;
         width: calc(100% - 2rem);
-        background: inherit;
+        background: var(--aside-bg);
+        border-radius: inherit;
 
         display: flex;
         gap: 0.3rem;
+        align-items: center;
     }
 }
 
@@ -80,7 +84,8 @@ aside {
     }
 
     .video {
-        height: 5rem;
+        height: 3.5rem;
+        transition: height 0.3s;
         margin-top: 0;
 
         > .play {
@@ -106,7 +111,16 @@ aside {
         }
 
         > div {
+            height: 1.5rem;
             justify-content: end;
+
+            > * {
+                width: 1.5rem;
+            }
+        }
+
+        &:has(.more > :checked) {
+            height: 6rem;
         }
     }
 }

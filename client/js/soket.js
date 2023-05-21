@@ -18,6 +18,7 @@ socket.on("data", (data) => {
 
         videoNode.querySelector(".name").value = x.name
         videoNode.querySelector(".url").value = x.url
+        videoNode.querySelector(".audio").value = x.audio
 
         videoNode.querySelector(".play").onclick = () => {
             socket.emit("open", i)
@@ -53,6 +54,7 @@ socket.on("data", (data) => {
     if (data.playlist[data.pos]) {
         title.innerText ||= data.playlist[data.pos].name
         video.src ||= data.playlist[data.pos].url
+        audio.src ||= data.playlist[data.pos].audio
     }
 
     room = data
@@ -62,28 +64,35 @@ socket.on("open", (pos) => {
     playButton.style.background = "url(./svg/play.svg)"
     title.innerText = room.playlist[pos].name
     video.src = room.playlist[pos].url
+    audio.src = room.playlist[pos].audio
 })
 
 socket.on("play", (time) => {
-    video.currentTime = time
+    setCurrentTime(time)
     video.play()
+    audio.play()
     playButton.style.background = "url(./svg/pause.svg)"
 })
 
 socket.on("pause", (time) => {
-    video.currentTime = time
+    setCurrentTime(time)
     video.pause()
+    audio.pause()
     playButton.style.background = "url(./svg/play.svg)"
 })
 
 socket.on("rewind", (time) => {
     if (video.paused) {
-        video.currentTime = time
+        setCurrentTime(time)
     } else {
         video.pause()
-        video.currentTime = time
+        setCurrentTime(time)
         setTimeout(() => {
             video.play()
         }, 1000)
     }
 })
+
+function setCurrentTime(time) {
+    audio.currentTime = video.currentTime = time
+}

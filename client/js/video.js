@@ -1,4 +1,5 @@
 const video = document.querySelector(`video`),
+    audio = document.querySelector(`audio`),
     playButton = document.querySelector(`#play`),
     range = document.querySelector(`#range`),
     videoBox = document.querySelector(`#videoBox`)
@@ -88,7 +89,7 @@ video.addEventListener("progress", () => {
 })
 
 document.querySelector("#volume").oninput = (e) => {
-    video.volume = e.target.valueAsNumber
+    audio.volume = video.volume = e.target.valueAsNumber
     e.target.setAttribute(
         "valueAsPercentage",
         Math.round(video.volume * 100) + "%"
