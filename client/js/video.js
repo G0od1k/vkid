@@ -23,6 +23,22 @@ document.querySelector(`#fullscreen`).onclick = () => {
     }
 }
 
+let onFullscreenTimeoutIds = []
+
+video.onclick = (e) => {
+    if (e.detail == 1) {
+        onFullscreenTimeoutIds.push(
+            setTimeout(() => {
+                play.click()
+            }, 200)
+        )
+    } else {
+        document.querySelector(`#fullscreen`).click()
+        onFullscreenTimeoutIds.forEach((x) => clearTimeout(x))
+        onFullscreenTimeoutIds = []
+    }
+}
+
 range.onclick = (e) => {
     socket.emit("rewind", video.duration * (e.offsetX / range.offsetWidth))
 }
