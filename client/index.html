@@ -16,7 +16,14 @@
     <body>
         <div id="videoBox">
             <h2 id="title"></h2>
-            <video></video>
+            <video>
+                <track
+                    label="Subtitles"
+                    kind="subtitles"
+                    srclang="en"
+                    default
+                />
+            </video>
             <audio></audio>
             <div id="btns">
                 <button id="play" class="play"></button>
@@ -44,6 +51,7 @@
                 <label>Name:<input type="text" id="addVideoName" /></label>
                 <label>Video:<input type="text" id="addVideoUrl" /></label>
                 <label>Audio:<input type="text" id="addVideoAudio" /></label>
+                <label>Subtitles:<input type="text" id="addVideoVtt" /></label>
                 <div>
                     <button type="submit" class="plus"></button>
                     <label class="btn more">
@@ -64,6 +72,7 @@
                 <input type="text" class="name" />
                 <input type="text" class="url" />
                 <input type="text" class="audio" />
+                <input type="text" class="vtt" />
                 <div>
                     <label class="btn more">
                         <input type="checkbox" hidden />

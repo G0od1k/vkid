@@ -19,6 +19,7 @@ socket.on("data", (data) => {
         videoNode.querySelector(".name").value = x.name
         videoNode.querySelector(".url").value = x.url
         videoNode.querySelector(".audio").value = x.audio
+        videoNode.querySelector(".vtt").value = x.vtt
 
         videoNode.querySelector(".play").onclick = () => {
             socket.emit("open", i)
@@ -55,6 +56,7 @@ socket.on("data", (data) => {
         title.innerText ||= data.playlist[data.pos].name
         video.src ||= data.playlist[data.pos].url
         audio.src ||= data.playlist[data.pos].audio
+        if (!vtt.src) setVtt(data.playlist[data.pos].vtt)
     }
 
     room = data
@@ -65,6 +67,7 @@ socket.on("open", (pos) => {
     title.innerText = room.playlist[pos].name
     video.src = room.playlist[pos].url
     audio.src = room.playlist[pos].audio
+    setVtt(room.playlist[pos].vtt)
 })
 
 socket.on("play", (time) => {
@@ -95,4 +98,14 @@ socket.on("rewind", (time) => {
 
 function setCurrentTime(time) {
     audio.currentTime = video.currentTime = time
+}
+
+function setVtt(url) {
+    fetch(url)
+        .then((res) => res.text())
+        .then((txt) => {
+            vtt.src = `data:text/plain;charset=utf-8;base64,${btoa(
+                unescape(encodeURIComponent(txt))
+            )}`
+        })
 }

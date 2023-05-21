@@ -19,13 +19,11 @@
         font-family: "Roboto Mono", monospace;
     }
 
-    overflow: hidden;
     height: 6rem;
     flex-shrink: 0;
-    transition: height 0.3s;
 
     &:has(#moreAddLines:checked) {
-        height: 8rem;
+        height: 10rem;
     }
 }
 
@@ -35,6 +33,9 @@
     padding: 1rem;
     border-radius: 0.5rem;
     background-color: var(--aside-bg);
+
+    overflow: hidden;
+    transition: height 0.3s;
 
     position: relative;
 
@@ -85,7 +86,6 @@ aside {
 
     .video {
         height: 3.5rem;
-        transition: height 0.3s;
         margin-top: 0;
 
         > .play {
@@ -120,7 +120,7 @@ aside {
         }
 
         &:has(.more > :checked) {
-            height: 6rem;
+            height: 6.5rem;
         }
     }
 }

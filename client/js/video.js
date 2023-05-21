@@ -1,5 +1,6 @@
 const video = document.querySelector(`video`),
     audio = document.querySelector(`audio`),
+    vtt = document.querySelector(`track`),
     playButton = document.querySelector(`#play`),
     range = document.querySelector(`#range`),
     videoBox = document.querySelector(`#videoBox`)
