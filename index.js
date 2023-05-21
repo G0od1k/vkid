@@ -66,6 +66,24 @@ io.on("connection", (socket) => {
         io.to(room.code).emit("data", room)
     })
 
+    socket.on("up", (i) => {
+        if (i == 0) return
+        ;[room.playlist[i], room.playlist[i - 1]] = [
+            room.playlist[i - 1],
+            room.playlist[i],
+        ]
+        io.to(room.code).emit("data", room)
+    })
+
+    socket.on("down", (i) => {
+        if (i == room.playlist.length - 1) return
+        ;[room.playlist[i], room.playlist[i + 1]] = [
+            room.playlist[i + 1],
+            room.playlist[i],
+        ]
+        io.to(room.code).emit("data", room)
+    })
+
     socket.on("play", (time) => {
         io.to(room.code).emit("play", time)
     })

@@ -14,7 +14,7 @@ socket.on("data", (data) => {
     data.playlist.forEach((x, i) => {
         let videoNode = document
             .querySelector("#video-tem")
-            .content.cloneNode(true)
+            .content.firstElementChild.cloneNode(true)
 
         videoNode.querySelector(".name").value = x.name
         videoNode.querySelector(".url").value = x.url
@@ -25,6 +25,26 @@ socket.on("data", (data) => {
 
         videoNode.querySelector(".cross").onclick = () => {
             socket.emit("delete", i)
+        }
+
+        videoNode.querySelector(".arrow-up").onclick = () => {
+            socket.emit("up", i)
+        }
+
+        videoNode.querySelector(".arrow-down").onclick = () => {
+            socket.emit("down", i)
+        }
+
+        if (i == 0) {
+            videoNode
+                .querySelector(".video > div")
+                .removeChild(videoNode.querySelector(".arrow-up"))
+        }
+
+        if (i == data.playlist.length - 1) {
+            videoNode
+                .querySelector(".video > div")
+                .removeChild(videoNode.querySelector(".arrow-down"))
         }
 
         playlistNode.appendChild(videoNode)
