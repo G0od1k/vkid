@@ -1,0 +1,26 @@
+#subtitleBox {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    text-align: center;
+}
+
+#subtitles {
+    font-family: "Roboto", sans-serif;
+    white-space: pre;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    line-height: 1.6rem;
+
+    background: #0006;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.2rem;
+
+    cursor: default;
+
+    &:empty {
+        display: none !important;
+    }
+}

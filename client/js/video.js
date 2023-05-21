@@ -69,6 +69,9 @@ video.ontimeupdate = function () {
 
     range.querySelector("#rangeTime").style.width =
         100 * (video.currentTime / video.duration) + "%"
+
+    document.querySelector("#subtitles").innerHTML =
+        vtt.track.activeCues[0]?.text ?? ""
 }
 
 video.addEventListener("progress", () => {
@@ -96,3 +99,5 @@ document.querySelector("#volume").oninput = (e) => {
         Math.round(video.volume * 100) + "%"
     )
 }
+
+vtt.track.mode = "hidden"
