@@ -23,6 +23,10 @@ socket.on("data", (data) => {
             socket.emit("open", i)
         }
 
+        videoNode.querySelector(".cross").onclick = () => {
+            socket.emit("delete", i)
+        }
+
         playlistNode.appendChild(videoNode)
     })
 

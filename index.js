@@ -61,6 +61,11 @@ io.on("connection", (socket) => {
         io.to(room.code).emit("data", room)
     })
 
+    socket.on("delete", (i) => {
+        room.playlist.splice(i, 1)
+        io.to(room.code).emit("data", room)
+    })
+
     socket.on("play", (time) => {
         io.to(room.code).emit("play", time)
     })
