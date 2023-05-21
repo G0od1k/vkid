@@ -42,7 +42,12 @@
             <form id="addVideoForm">
                 <label>Name: <input type="text" id="addVideoName" /></label>
                 <label>Video: <input type="text" id="addVideoUrl" /></label>
-                <button type="submit" class="plus"></button>
+                <div>
+                    <button type="submit" class="plus"></button>
+                    <label class="btn more">
+                        <input type="checkbox" id="moreAddLines" hidden />
+                    </label>
+                </div>
             </form>
             <div id="playlist"></div>
         </aside>

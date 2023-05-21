@@ -5,3 +5,20 @@
 .plus {
     background-image: url(./svg/plus.svg);
 }
+
+.more {
+    position: relative;
+
+    &::before {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        content: "";
+        background-image: url(./svg/caret-down.svg);
+        transition: rotate 0.3s;
+    }
+
+    &:has(:checked)::before {
+        rotate: -180deg;
+    }
+}
