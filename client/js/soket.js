@@ -21,6 +21,12 @@ socket.on("data", (data) => {
         videoNode.querySelector(".audio").value = x.audio
         videoNode.querySelector(".vtt").value = x.vtt
 
+        x.img && (videoNode.querySelector("img").src = x.img)
+
+        videoNode.querySelector("img").onclick = () => {
+            socket.emit("open", i)
+        }
+
         videoNode.querySelector(".play").onclick = () => {
             socket.emit("open", i)
         }

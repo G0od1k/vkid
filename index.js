@@ -53,12 +53,13 @@ io.on("connection", (socket) => {
         room.pos = pos
     })
 
-    socket.on("add", (name, url, audio, vtt) => {
+    socket.on("add", (name, url, audio, vtt, img) => {
         room.playlist.push({
             name: name || "Name",
             url: url || "#",
             audio: audio || "#",
             vtt: vtt || "#",
+            img: img,
         })
         io.to(room.code).emit("data", room)
     })

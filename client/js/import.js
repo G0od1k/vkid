@@ -4,7 +4,7 @@ document.querySelector(`#import`).onchange = function () {
     fr.onload = function () {
         const data = JSON.parse(fr.result)
         data.forEach((x) => {
-            socket.emit("add", x.name, x.url, x.audio, x.vtt)
+            socket.emit("add", x.name, x.url, x.audio, x.vtt, x.img)
         })
     }
 
