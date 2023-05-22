@@ -71,7 +71,7 @@ video.ontimeupdate = function () {
         100 * (video.currentTime / video.duration) + "%"
 
     document.querySelector("#subtitles").innerHTML =
-        vtt.track.activeCues[0]?.text ?? ""
+        vtt.track.activeCues?.[0]?.text ?? ""
 }
 
 video.addEventListener("progress", () => {
