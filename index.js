@@ -102,6 +102,8 @@ io.on("connection", (socket) => {
     console.log(Object.keys(rooms).join(" "))
 })
 
-server.listen(3000, () => {
-    console.log("3000")
+const port = process.env.PORT || 3000
+
+server.listen(port, () => {
+    console.log(port)
 })
