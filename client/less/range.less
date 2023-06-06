@@ -9,15 +9,21 @@ input[type="range"] {
     position: relative;
 
     &:hover::after {
-        transform: translateY(-0.5rem);
+        transform: translate(-50%, 0);
         opacity: 1;
     }
 
     &::after {
         content: attr(valueAsPercentage);
+        background: #0006;
+        padding: 0.2rem 0.4rem;
+        border-radius: 0.2rem;
+        font-size: 0.8rem;
+
         position: absolute;
-        width: 100%;
-        text-align: center;
+        left: 50%;
+        bottom: 2rem;
+        transform: translate(-50%, 1rem);
 
         transition: 0.3s;
         opacity: 0;
