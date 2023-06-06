@@ -21,6 +21,7 @@
 
     height: 6rem;
     flex-shrink: 0;
+    margin: 0.5rem 0.5rem 0.5rem 0;
 
     &:has(#moreAddLines:checked) {
         height: 12rem;
@@ -29,7 +30,6 @@
 
 #addVideoForm,
 .video {
-    margin: 0.5rem 0.5rem 0.5rem 0;
     padding: 1rem;
     border-radius: 0.5rem;
     background-color: var(--aside-bg);
@@ -86,7 +86,7 @@ aside {
 
     .video {
         height: 3.5rem;
-        margin-top: 0;
+        margin-bottom: 0.5rem;
 
         > .play {
             float: left;
@@ -154,5 +154,5 @@ aside {
 }
 
 #playlist {
-    overflow-y: overlay;
+    overflow-y: scroll;
 }
