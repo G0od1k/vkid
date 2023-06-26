@@ -91,14 +91,14 @@ socket.on("pause", (time) => {
 })
 
 socket.on("rewind", (time) => {
-    if (video.paused) {
-        setCurrentTime(time)
-    } else {
+    if (videoIsPlaying()) {
         video.pause()
         setCurrentTime(time)
         setTimeout(() => {
             video.play()
         }, 1000)
+    } else {
+        setCurrentTime(time)
     }
 })
 
