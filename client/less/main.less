@@ -6,3 +6,22 @@ body {
     height: 100%;
     font-family: "Roboto", sans-serif;
 }
+
+@media (orientation: landscape) {
+    aside {
+        position: absolute;
+        width: 30rem;
+        height: 100% !important;
+    }
+
+    #videoBox {
+        @hlf-o-width: ~"50vw - 15rem"; // Half of the outer width
+
+        position: absolute !important;
+        top: ~"min(50%, @{hlf-o-width} - ${width} * 0.21875)";
+        left: calc(@hlf-o-width);
+        transform: translate(-50%, -50%);
+
+        width: ~"min(80rem, (@{hlf-o-width}) * 2 - 1rem, 100vh / 9 * 16)" !important;
+    }
+}
