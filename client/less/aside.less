@@ -75,6 +75,8 @@ aside {
         border-radius: 0.25rem;
         padding: 0;
 
+        transition: 0.12s;
+
         &:hover {
             background-color: var(--btn-h);
         }
@@ -149,6 +151,10 @@ aside {
             > .name {
                 width: 100%;
             }
+        }
+
+        &:not(:hover) > div > :is(.btn, button) {
+            opacity: 0;
         }
     }
 }
