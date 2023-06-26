@@ -144,7 +144,20 @@ aside {
             padding-left: 11rem;
 
             > .play {
-                display: none;
+                position: absolute;
+                top: 50%;
+                left: 5rem;
+                transform: translate(-50%, -50%);
+
+                opacity: 0;
+
+                background-color: #0006;
+
+                z-index: 1;
+            }
+
+            &:hover > .play {
+                opacity: 1;
             }
 
             > .name {
