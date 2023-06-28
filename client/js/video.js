@@ -3,7 +3,8 @@ const video = document.querySelector(`video`),
     vtt = document.querySelector(`track`),
     playButton = document.querySelector(`#play`),
     range = document.querySelector(`#range`),
-    videoBox = document.querySelector(`#videoBox`)
+    videoBox = document.querySelector(`#videoBox`),
+    speed = document.querySelector(`#speed`)
 
 function videoIsPlaying() {
     return !!(
@@ -112,3 +113,12 @@ document.querySelector("#volume").oninput = (e) => {
 }
 
 vtt.track.mode = "hidden"
+
+speed.onwheel = (e) => {
+    let step = e.shiftKey ? 0.0625 : 0.25
+
+    socket.emit(
+        "setSpeed",
+        Math.max(Math.min(speed.value + Math.sign(-e.deltaY) * step, 16), step)
+    )
+}

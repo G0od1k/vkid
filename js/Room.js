@@ -5,6 +5,7 @@ class Room {
         this.users = new Set()
         this.playlist = []
         this.pos = 0
+        this.speed = 1
 
         this.#rooms = rooms
         rooms[code] = this

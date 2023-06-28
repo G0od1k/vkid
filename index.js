@@ -95,6 +95,10 @@ io.on("connection", (socket) => {
         io.to(room.code).emit("pause", time, id)
     })
 
+    socket.on("setSpeed", (speed) => {
+        io.to(room.code).emit("setSpeed", (room.speed = speed))
+    })
+
     socket.on("rewind", (time) => {
         io.to(room.code).emit("rewind", time)
     })

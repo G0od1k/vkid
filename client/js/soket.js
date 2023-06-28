@@ -68,6 +68,8 @@ socket.on("data", (data) => {
         video.poster ||= videoData.img
     }
 
+    setSpeed(data.speed)
+
     room = data
 })
 
@@ -113,6 +115,8 @@ socket.on("rewind", (time) => {
     }
 })
 
+socket.on("setSpeed", setSpeed)
+
 function setCurrentTime(time) {
     audio.currentTime = video.currentTime = time
 }
@@ -125,4 +129,11 @@ function setVtt(url) {
                 unescape(encodeURIComponent(txt))
             )}`
         })
+}
+
+function setSpeed(value) {
+    speed.value = value
+    speed.innerText = value + "x"
+    video.playbackRate = value
+    audio.playbackRate = value
 }

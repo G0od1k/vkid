@@ -38,7 +38,7 @@ video {
 
     transition: 0.3s;
 
-    & > :not(:is(button, label)) ~ :not(:is(button, label)) {
+    & > :not(:is(button, label)) + :not(:is(button, label)) {
         margin-left: 0.5rem;
     }
 
@@ -107,4 +107,11 @@ video {
     #fullscreen {
         background: url(./svg/compress.svg);
     }
+}
+
+#speed {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    line-height: 2rem;
+    height: 100%;
 }
