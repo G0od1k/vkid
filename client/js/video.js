@@ -108,10 +108,7 @@ video.addEventListener("progress", () => {
 
 document.querySelector("#volume").oninput = (e) => {
     audio.volume = video.volume = e.target.valueAsNumber
-    e.target.setAttribute(
-        "valueAsPercentage",
-        Math.round(video.volume * 100) + "%"
-    )
+    e.target.setAttribute("displayValue", Math.round(video.volume * 100) + "%")
 }
 
 vtt.track.mode = "hidden"
