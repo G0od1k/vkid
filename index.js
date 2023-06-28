@@ -87,12 +87,12 @@ io.on("connection", (socket) => {
         io.to(room.code).emit("data", room)
     })
 
-    socket.on("play", (time) => {
-        io.to(room.code).emit("play", time)
+    socket.on("play", (time, id) => {
+        io.to(room.code).emit("play", time, id)
     })
 
-    socket.on("pause", (time) => {
-        io.to(room.code).emit("pause", time)
+    socket.on("pause", (time, id) => {
+        io.to(room.code).emit("pause", time, id)
     })
 
     socket.on("rewind", (time) => {

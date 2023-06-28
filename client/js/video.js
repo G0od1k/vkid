@@ -14,12 +14,17 @@ function videoIsPlaying() {
     )
 }
 
-video.onplay = () => {
-    socket.emit("play", video.currentTime)
+let prevPlayTime = 0
+
+video.onplay = (e) => {
+    if (e.timeStamp - prevPlayTime > 100) {
+        socket.emit("play", video.currentTime, socket.id)
+    }
+    prevPlayTime = e.timeStamp
 }
 
 video.onpause = () => {
-    socket.emit("pause", video.currentTime)
+    socket.emit("pause", video.currentTime, socket.id)
 }
 
 playButton.onclick = () => {

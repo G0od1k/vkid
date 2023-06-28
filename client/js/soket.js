@@ -76,17 +76,21 @@ socket.on("open", (pos) => {
     setVtt(room.playlist[pos].vtt)
 })
 
-socket.on("play", (time) => {
+socket.on("play", (time, id) => {
     setCurrentTime(time)
-    video.play()
-    audio.play()
+    if (id != socket.id) {
+        video.play()
+        audio.play().catch(() => {})
+    }
     playButton.style.background = "url(./svg/pause.svg)"
 })
 
-socket.on("pause", (time) => {
+socket.on("pause", (time, id) => {
     setCurrentTime(time)
-    video.pause()
-    audio.pause()
+    if (id != socket.id) {
+        video.pause()
+        audio.pause()
+    }
     playButton.style.background = "url(./svg/play.svg)"
 })
 
