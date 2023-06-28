@@ -58,11 +58,14 @@ socket.on("data", (data) => {
         playlistNode.appendChild(videoNode)
     })
 
-    if (data.playlist[data.pos]) {
-        title.innerText ||= data.playlist[data.pos].name
-        video.src ||= data.playlist[data.pos].url
-        audio.src ||= data.playlist[data.pos].audio
-        if (!vtt.src) setVtt(data.playlist[data.pos].vtt)
+    let videoData = data.playlist[data.pos]
+
+    if (videoData) {
+        title.innerText ||= videoData.name
+        video.src ||= videoData.url
+        audio.src ||= videoData.audio
+        if (!vtt.src) setVtt(videoData.vtt)
+        video.poster ||= videoData.img
     }
 
     room = data
@@ -70,10 +73,14 @@ socket.on("data", (data) => {
 
 socket.on("open", (pos) => {
     playButton.style.background = "url(./svg/play.svg)"
-    title.innerText = room.playlist[pos].name
-    video.src = room.playlist[pos].url
-    audio.src = room.playlist[pos].audio
-    setVtt(room.playlist[pos].vtt)
+
+    let videoData = room.playlist[pos]
+
+    title.innerText = videoData.name
+    video.src = videoData.url
+    audio.src = videoData.audio
+    setVtt(videoData.vtt)
+    video.poster = videoData.img
 })
 
 socket.on("play", (time, id) => {
