@@ -49,8 +49,7 @@ io.on("connection", (socket) => {
     })
 
     socket.on("open", (pos) => {
-        io.to(room.code).emit("open", pos)
-        room.pos = pos
+        io.to(room.code).emit("open", (room.pos = pos))
     })
 
     socket.on("add", (name, url, audio, vtt, img) => {
