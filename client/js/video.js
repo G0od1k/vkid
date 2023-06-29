@@ -4,7 +4,8 @@ const video = document.querySelector(`video`),
     playButton = document.querySelector(`#play`),
     range = document.querySelector(`#range`),
     videoBox = document.querySelector(`#videoBox`),
-    speed = document.querySelector(`#speed`)
+    speed = document.querySelector(`#speed`),
+    volume = document.querySelector(`#volume`)
 
 function videoIsPlaying() {
     return !!(
@@ -107,9 +108,22 @@ video.addEventListener("progress", () => {
     }
 })
 
-document.querySelector("#volume").oninput = (e) => {
-    audio.volume = video.volume = e.target.valueAsNumber
-    e.target.setAttribute("displayValue", Math.round(video.volume * 100) + "%")
+volume.oninput = (e) => setVolume(e.target.valueAsNumber)
+
+volume.onwheel = (e) =>
+    setVolume(
+        Math.max(
+            Math.min(
+                video.volume + Math.sign(-e.deltaY) * volume.step,
+                volume.max
+            ),
+            volume.min
+        )
+    )
+
+function setVolume(value = 1) {
+    volume.value = audio.volume = video.volume = value
+    volume.setAttribute("displayValue", Math.round(value * 100) + "%")
 }
 
 vtt.track.mode = "hidden"
