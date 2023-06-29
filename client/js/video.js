@@ -122,3 +122,7 @@ speed.onwheel = (e) => {
         Math.max(Math.min(speed.value + Math.sign(-e.deltaY) * step, 16), step)
     )
 }
+
+speed.onclick = () => {
+    socket.emit("setSpeed", 1)
+}
