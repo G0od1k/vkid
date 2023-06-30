@@ -19,6 +19,7 @@ function videoIsPlaying() {
 let prevPlayTime = 0
 
 video.onplay = (e) => {
+    audio.play().catch(() => {})
     if (e.timeStamp - prevPlayTime > 100) {
         socket.emit("play", video.currentTime, socket.id)
     }
@@ -26,6 +27,7 @@ video.onplay = (e) => {
 }
 
 video.onpause = () => {
+    audio.pause()
     socket.emit("pause", video.currentTime, socket.id)
 }
 

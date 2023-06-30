@@ -89,7 +89,6 @@ socket.on("play", (time, id) => {
     setCurrentTime(time)
     if (id != socket.id) {
         video.play()
-        audio.play().catch(() => {})
     }
     playButton.style.background = "url(./svg/pause.svg)"
 })
@@ -98,7 +97,6 @@ socket.on("pause", (time, id) => {
     setCurrentTime(time)
     if (id != socket.id) {
         video.pause()
-        audio.pause()
     }
     playButton.style.background = "url(./svg/play.svg)"
 })
