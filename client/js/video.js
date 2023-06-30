@@ -122,9 +122,13 @@ volume.onwheel = (e) =>
     )
 
 function setVolume(value = 1) {
+    if (isNaN(value)) value = 1
+    localStorage.setItem("volume", value)
     volume.value = audio.volume = video.volume = value
     volume.setAttribute("displayValue", Math.round(value * 100) + "%")
 }
+
+setVolume(parseFloat(localStorage.getItem("volume")))
 
 vtt.track.mode = "hidden"
 
