@@ -116,7 +116,8 @@ volume.onwheel = (e) =>
     setVolume(
         Math.max(
             Math.min(
-                video.volume + Math.sign(-e.deltaY) * volume.step,
+                video.volume +
+                    Math.sign(-e.deltaY) * (e.shiftKey ? 0.01 : volume.step),
                 volume.max
             ),
             volume.min
@@ -125,6 +126,9 @@ volume.onwheel = (e) =>
 
 function setVolume(value = 1) {
     if (isNaN(value)) value = 1
+
+    value = value.toFixed(2)
+
     localStorage.setItem("volume", value)
     volume.value = audio.volume = video.volume = value
     volume.setAttribute("displayValue", Math.round(value * 100) + "%")
