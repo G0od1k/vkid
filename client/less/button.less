@@ -1,0 +1,28 @@
+button,
+.btn {
+    display: inline-block;
+    width: 2rem;
+    aspect-ratio: 1;
+    border: 0;
+    background-color: var(--btn);
+    border-radius: 0.25rem;
+    padding: 0;
+
+    cursor: pointer;
+
+    transition: 0.12s;
+
+    &:hover {
+        background-color: var(--btn-h);
+    }
+
+    &:active {
+        background-color: var(--btn-a);
+    }
+
+    > input {
+        appearance: none;
+        width: 0;
+        height: 0;
+    }
+}

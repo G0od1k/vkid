@@ -38,16 +38,16 @@ video {
 
     transition: 0.3s;
 
-    & > :not(:is(button, label)) + :not(:is(button, label)) {
+    & > :not(:is(button, .btn)) + :not(:is(button, .btn)) {
         margin-left: 0.5rem;
     }
 
-    > button {
+    > :is(button, .btn) {
         min-width: 2rem;
         height: 2rem;
         border: 0;
         padding: 0;
-        background-color: none;
+        background-color: transparent;
     }
 
     &:hover {
@@ -61,6 +61,8 @@ video {
     line-height: 1rem;
     white-space: pre-wrap;
     font-family: var(--font-mono);
+
+    cursor: default;
 }
 
 #range {
@@ -79,6 +81,8 @@ video {
 
         border-radius: 1rem;
     }
+
+    cursor: pointer;
 }
 
 #rangeBg {
@@ -114,4 +118,6 @@ video {
     font-size: 0.8rem;
     line-height: 2rem;
     height: 100%;
+
+    cursor: pointer;
 }
