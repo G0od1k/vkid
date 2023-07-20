@@ -124,10 +124,14 @@ volume.onwheel = (e) =>
         )
     )
 
+volume.onfocus = () => volume.blur()
+
 function setVolume(value = 1) {
     if (isNaN(value)) value = 1
 
     value = value.toFixed(2)
+
+    video.muted = audio.muted = false
 
     localStorage.setItem("volume", value)
     volume.value = audio.volume = video.volume = value

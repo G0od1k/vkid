@@ -10,6 +10,7 @@
         <script src="./js/playlist.js" defer></script>
         <script src="./js/video.js" defer></script>
         <script src="./js/import.js" defer></script>
+        <script src="./js/keys.js" defer></script>
 
         <link rel="stylesheet" href="style.css" />
         <title>Vkid</title>
@@ -30,7 +31,7 @@
                 <span id="subtitles"></span>
             </div>
             <div id="btns">
-                <button id="play" class="play"></button>
+                <button id="play" class="play" tabindex="-1"></button>
                 <span id="time">00:00<br />00:00</span>
                 <input
                     type="range"
@@ -40,6 +41,7 @@
                     min="0"
                     max="1"
                     step="0.05"
+                    tabindex="-1"
                 />
                 <div id="range">
                     <div id="rangeBg"></div>
@@ -50,7 +52,7 @@
                 <label class="subtitles" id="subtitlesBtn">
                     <input type="checkbox" hidden checked />
                 </label>
-                <button id="fullscreen"></button>
+                <button id="fullscreen" tabindex="-1"></button>
             </div>
         </div>
 
