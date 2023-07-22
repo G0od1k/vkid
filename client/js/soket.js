@@ -62,6 +62,7 @@ socket.on("playlist", (data) => {
         audio.src ||= videoData.audio
         if (!vtt.src) setVtt(videoData.vtt)
         video.poster ||= videoData.img
+        setNowPlaying(data.pos)
     }
 
     setSpeed(data.speed)
@@ -97,6 +98,8 @@ socket.on("room", (data) => {
 
 socket.on("open", (pos) => {
     playButton.style.background = "url(./svg/play.svg)"
+
+    setNowPlaying((room.pos = pos))
 
     let videoData = room.playlist[pos]
 
@@ -136,6 +139,13 @@ socket.on("rewind", (time) => {
 })
 
 socket.on("setSpeed", setSpeed)
+
+function setNowPlaying(pos) {
+    document.querySelector(".nowplaying")?.classList.remove("nowplaying")
+    document
+        .querySelector(`.video:nth-child(${pos + 1})`)
+        ?.classList.add("nowplaying")
+}
 
 function setCurrentTime(time) {
     audio.currentTime = video.currentTime = time

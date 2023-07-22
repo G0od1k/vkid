@@ -49,6 +49,7 @@ io.on("connection", (socket) => {
     })
 
     socket.on("open", (pos) => {
+        if (!room.playlist[pos]) return 0
         io.to(room.code).emit("open", (room.pos = pos))
     })
 
@@ -64,6 +65,7 @@ io.on("connection", (socket) => {
     })
 
     socket.on("delete", (i) => {
+        if (i == room.pos) room.pos = -1
         room.playlist.splice(i, 1)
         io.to(room.code).emit("playlist", room)
     })
