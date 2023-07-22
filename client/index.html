@@ -82,7 +82,10 @@
         </aside>
 
         <form id="room">
-            <input type="text" id="code" />
+            <div id="users"></div>
+            <footer>
+                <input type="text" id="code" />
+            </footer>
         </form>
 
         <template id="video-tem">
@@ -101,6 +104,12 @@
                     <button class="cross"></button>
                 </div>
                 <img />
+            </div>
+        </template>
+
+        <template id="user-tem">
+            <div class="user">
+                <span class="name"></span>
             </div>
         </template>
     </body>

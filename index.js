@@ -18,7 +18,7 @@ function genRoom(socket) {
             .join("")
     } while (rooms[code] != undefined)
 
-    return new Room(code, socket, rooms)
+    return new Room(code, socket, rooms, io)
 }
 
 app.get("/", (req, res) => {
@@ -60,12 +60,12 @@ io.on("connection", (socket) => {
             vtt: vtt || "#",
             img: img,
         })
-        io.to(room.code).emit("data", room)
+        io.to(room.code).emit("playlist", room)
     })
 
     socket.on("delete", (i) => {
         room.playlist.splice(i, 1)
-        io.to(room.code).emit("data", room)
+        io.to(room.code).emit("playlist", room)
     })
 
     socket.on("up", (i) => {
@@ -74,7 +74,7 @@ io.on("connection", (socket) => {
             room.playlist[i - 1],
             room.playlist[i],
         ]
-        io.to(room.code).emit("data", room)
+        io.to(room.code).emit("playlist", room)
     })
 
     socket.on("down", (i) => {
@@ -83,7 +83,7 @@ io.on("connection", (socket) => {
             room.playlist[i + 1],
             room.playlist[i],
         ]
-        io.to(room.code).emit("data", room)
+        io.to(room.code).emit("playlist", room)
     })
 
     socket.on("play", (time, id) => {

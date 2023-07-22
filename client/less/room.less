@@ -1,19 +1,88 @@
-#room > input {
-    border: 0;
-    background: 0;
-
+#room {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 6rem;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    border-radius: 0.5rem;
 
-    font-size: 2rem;
-    text-transform: uppercase;
-    color: white;
-    text-align: center;
-    font-family: var(--font-mono);
+    overflow: hidden;
+    background: var(--aside-bg);
+    z-index: 2;
 
-    &:focus-visible {
-        outline: inherit;
+    transition: 0.3s;
+    height: 3rem;
+    width: 5.5rem;
+
+    &:hover {
+        height: 24rem;
+    }
+
+    #users {
+        height: 20.5rem;
+        margin-top: 0.5rem;
+
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        scrollbar-gutter: stable both-edges;
+
+        overflow: hidden scroll;
+
+        > .user {
+            border-radius: 0.5rem;
+
+            &.you {
+                background-color: var(--aside-bg-a);
+            }
+        }
+
+        .name {
+            display: inline-block;
+            width: 3.5rem;
+            font-family: var(--font-mono);
+            white-space: nowrap;
+        }
+    }
+
+    & > footer,
+    & .user {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        padding: 0 0.5rem;
+        min-height: 3rem;
+
+        text-align: center;
+    }
+
+    > footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        box-sizing: border-box;
+
+        background-color: var(--aside-bg);
+
+        > input {
+            height: 2rem;
+            padding: 0.5rem 0;
+            width: 4.5rem;
+            border: 0;
+            background: 0;
+
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            color: white;
+            text-align: center;
+            font-family: var(--font-mono);
+
+            &:focus-visible {
+                outline: inherit;
+            }
+        }
+    }
+
+    button {
+        vertical-align: top;
     }
 }

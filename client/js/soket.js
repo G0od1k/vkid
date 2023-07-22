@@ -1,10 +1,6 @@
 let socket = io()
 
-socket.on("data", (data) => {
-    let input = document.querySelector("#room > input")
-    input.placeholder = data.code
-    input.value = ""
-
+socket.on("playlist", (data) => {
     const playlistNode = document.querySelector("#playlist")
 
     Object.values(playlistNode.children).forEach((e) => {
@@ -69,6 +65,32 @@ socket.on("data", (data) => {
     }
 
     setSpeed(data.speed)
+
+    room = data
+})
+
+socket.on("room", (data) => {
+    let input = document.querySelector("#code")
+    input.placeholder = data.code
+    input.value = ""
+
+    let usersNode = document.querySelector(`#users`)
+
+    Object.values(usersNode.children).forEach((e) => {
+        usersNode.removeChild(e)
+    })
+
+    Object.keys(data.users).forEach((x) => {
+        let userNode = document
+            .querySelector("#user-tem")
+            .content.firstElementChild.cloneNode(true)
+
+        socket.id == x && userNode.classList.add("you")
+
+        userNode.querySelector(".name").innerText = x.slice(0, 5)
+
+        usersNode.appendChild(userNode)
+    })
 
     room = data
 })
