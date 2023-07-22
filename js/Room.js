@@ -32,8 +32,11 @@ class Room {
             delete this.#rooms[this.code]
         }
     }
+    emit(...args) {
+        this.#io.to(this.code).emit(...args)
+    }
     update() {
-        this.#io.to(this.code).emit("room", this)
+        this.emit("room", this)
     }
 }
 
