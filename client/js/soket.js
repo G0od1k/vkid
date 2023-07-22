@@ -86,6 +86,8 @@ socket.on("room", (data) => {
             .querySelector("#user-tem")
             .content.firstElementChild.cloneNode(true)
 
+        userNode.id = "user-" + x
+
         socket.id == x && userNode.classList.add("you")
 
         userNode.querySelector(".name").innerText = x.slice(0, 5)
@@ -94,6 +96,11 @@ socket.on("room", (data) => {
     })
 
     room = data
+})
+
+socket.on("pingdata", (id, ping) => {
+    document.querySelector(`#user-${id} > .ping`).innerHTML =
+        Math.min(ping, 999) + "<small>ms</small>"
 })
 
 socket.on("open", (pos) => {
@@ -139,6 +146,8 @@ socket.on("rewind", (time) => {
 })
 
 socket.on("setSpeed", setSpeed)
+
+socket.on("ping", (callback) => callback())
 
 function setNowPlaying(pos) {
     document.querySelector(".nowplaying")?.classList.remove("nowplaying")

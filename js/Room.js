@@ -14,6 +14,8 @@ class Room {
         this.#io = io
 
         this.join(socket)
+
+        setInterval(() => this.ping(), 5000)
     }
     join(socket) {
         this.users[socket.id] = true
@@ -37,6 +39,16 @@ class Room {
     }
     update() {
         this.emit("room", this)
+    }
+    ping() {
+        Object.keys(this.users).forEach((id) => {
+            const start = Date.now()
+            this.#io
+                .to(id)
+                .emit("ping", () =>
+                    this.emit("pingdata", id, Date.now() - start)
+                )
+        })
     }
 }
 
