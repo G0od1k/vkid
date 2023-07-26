@@ -90,7 +90,7 @@ socket.on("room", (data) => {
 
         socket.id == x && userNode.classList.add("you")
 
-        userNode.querySelector(".name").innerText = x.slice(0, 5)
+        userNode.querySelector(".name").innerText = x.slice(0, 6)
 
         usersNode.appendChild(userNode)
     })
