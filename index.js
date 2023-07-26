@@ -50,7 +50,7 @@ io.on("connection", (socket) => {
 
     socket.on("open", (pos) => {
         if (!room.playlist[pos]) return 0
-        io.to(room.code).emit("open", (room.pos = pos))
+        room.emit("open", (room.pos = pos))
     })
 
     socket.on("add", (name, url, audio, vtt, img) => {
@@ -61,13 +61,13 @@ io.on("connection", (socket) => {
             vtt: vtt || "#",
             img: img,
         })
-        io.to(room.code).emit("playlist", room)
+        room.emit("playlist", room)
     })
 
     socket.on("delete", (i) => {
         if (i == room.pos) room.pos = -1
         room.playlist.splice(i, 1)
-        io.to(room.code).emit("playlist", room)
+        room.emit("playlist", room)
     })
 
     socket.on("up", (i) => {
@@ -76,7 +76,7 @@ io.on("connection", (socket) => {
             room.playlist[i - 1],
             room.playlist[i],
         ]
-        io.to(room.code).emit("playlist", room)
+        room.emit("playlist", room)
     })
 
     socket.on("down", (i) => {
@@ -85,23 +85,23 @@ io.on("connection", (socket) => {
             room.playlist[i + 1],
             room.playlist[i],
         ]
-        io.to(room.code).emit("playlist", room)
+        room.emit("playlist", room)
     })
 
     socket.on("play", (time, id) => {
-        io.to(room.code).emit("play", time, id)
+        room.emit("play", time, id)
     })
 
     socket.on("pause", (time, id) => {
-        io.to(room.code).emit("pause", time, id)
+        room.emit("pause", time, id)
     })
 
     socket.on("setSpeed", (speed) => {
-        io.to(room.code).emit("setSpeed", (room.speed = speed))
+        room.emit("setSpeed", (room.speed = speed))
     })
 
     socket.on("rewind", (time) => {
-        io.to(room.code).emit("rewind", time)
+        room.emit("rewind", time)
     })
 
     console.log("a user connected")
