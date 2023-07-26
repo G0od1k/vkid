@@ -25,6 +25,14 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/client/index.html")
 })
 
+app.get("/rooms", (req, res) => {
+    res.sendFile(__dirname + "/client/rooms/index.html")
+})
+
+app.get("/rooms.json", (req, res) => {
+    res.send(Object.values(rooms))
+})
+
 app.use(express.static("client"))
 
 io.on("connection", (socket) => {
