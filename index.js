@@ -112,6 +112,11 @@ io.on("connection", (socket) => {
         room.emit("rewind", time)
     })
 
+    socket.on("rename", (name) => {
+        socket.name = room.users[socket.id].name = name
+        room.update()
+    })
+
     console.log("a user connected")
     console.log(Object.keys(rooms).join(" "))
 })

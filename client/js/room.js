@@ -15,3 +15,5 @@ document.querySelector("#room > footer > .copy").onclick = () => {
         new URL("?room=" + room.code, window.location.href).href
     )
 }
+
+socket.emit("rename", localStorage.getItem("name"))
