@@ -81,16 +81,16 @@ socket.on("room", (data) => {
         usersNode.removeChild(e)
     })
 
-    Object.keys(data.users).forEach((x) => {
+    Object.values(data.users).forEach((user) => {
         let userNode = document
             .querySelector("#user-tem")
             .content.firstElementChild.cloneNode(true)
 
-        userNode.id = "user-" + x
+        userNode.id = "user-" + user.id
 
-        socket.id == x && userNode.classList.add("you")
+        socket.id == user.id && userNode.classList.add("you")
 
-        userNode.querySelector(".name").innerText = x.slice(0, 6)
+        userNode.querySelector(".name").innerText = user.id.slice(0, 6)
 
         usersNode.appendChild(userNode)
     })

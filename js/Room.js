@@ -1,3 +1,5 @@
+const User = require("./User")
+
 class Room {
     #rooms
     #io
@@ -18,7 +20,7 @@ class Room {
         setInterval(() => this.ping(), 5000)
     }
     join(socket) {
-        this.users[socket.id] = true
+        this.users[socket.id] = new User(socket)
         socket.join(this.code)
 
         this.update()
