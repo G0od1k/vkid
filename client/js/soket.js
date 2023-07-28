@@ -88,7 +88,11 @@ socket.on("room", (data) => {
 
         userNode.id = "user-" + user.id
 
-        socket.id == user.id && userNode.classList.add("you")
+        if (socket.id == user.id) {
+            userNode.classList.add("you")
+            userNode.querySelector(".name").ondblclick = () =>
+                dialog.showModal()
+        }
 
         userNode.querySelector(".name").innerText =
             user.name || user.id.slice(0, 6)

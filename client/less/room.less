@@ -38,7 +38,7 @@
         .name {
             display: inline-block;
             width: 6rem;
-            font-family: var(--font-mono);
+            font-family: var(--font-sans-serif);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -47,7 +47,7 @@
         .ping {
             display: inline-block;
             width: 2rem;
-            font-family: var(--font-sans-serif);
+            font-family: var(--font-mono);
 
             position: relative;
 
@@ -55,7 +55,7 @@
                 font-size: 0.55rem;
 
                 position: absolute;
-                top: calc(50% + 0.4rem);
+                top: calc(50% + 0.3rem);
                 left: 50%;
                 transform: translateX(-50%);
             }
@@ -98,6 +98,10 @@
             &:focus-visible {
                 outline: inherit;
             }
+        }
+
+        > * {
+            flex-shrink: 0;
         }
     }
 
