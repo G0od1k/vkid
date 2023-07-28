@@ -113,8 +113,9 @@ io.on("connection", (socket) => {
     })
 
     socket.on("rename", (name) => {
+        name ||= socket.id.slice(0, 6)
         socket.name = room.users[socket.id].name = name
-        room.update()
+        room.emit("rename", socket.id, name)
     })
 
     console.log("a user connected")

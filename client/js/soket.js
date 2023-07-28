@@ -94,8 +94,7 @@ socket.on("room", (data) => {
                 dialog.showModal()
         }
 
-        userNode.querySelector(".name").innerText =
-            user.name || user.id.slice(0, 6)
+        userNode.querySelector(".name").innerText = user.name
 
         usersNode.appendChild(userNode)
     })
@@ -153,6 +152,10 @@ socket.on("rewind", (time) => {
 socket.on("setSpeed", setSpeed)
 
 socket.on("ping", (callback) => callback())
+
+socket.on("rename", (id, name) => {
+    document.querySelector(`#user-${id} > .name`).innerText = name
+})
 
 function setNowPlaying(pos) {
     document.querySelector(".nowplaying")?.classList.remove("nowplaying")
