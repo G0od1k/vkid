@@ -169,6 +169,7 @@ function setCurrentTime(time) {
 }
 
 function setVtt(url) {
+    if (url == "#") return 0
     fetch(url)
         .then((res) => res.text())
         .then((txt) => {
